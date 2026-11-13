@@ -1,8 +1,10 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/home/devanshb/bin:$(go env GOPATH)/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/home/devanshb/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export GOPATH=$HOME/go
 
 # bun completions
 [ -s "/home/devanshb/.bun/_bun" ] && source "/home/devanshb/.bun/_bun"
@@ -14,8 +16,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # opencode
 export PATH=/home/devanshb/.opencode/bin:$PATH
 
-# docker
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
+# docker (don't export on WSL)
+# export DOCKER_HOST=unix:///run/user/1000/docker.sock
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -24,7 +26,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="refined"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -87,9 +89,9 @@ ZSH_THEME="refined"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(z git zsh-syntax-highlighting zsh-autosuggestions tmux)
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=true
-ZSH_TMUX_UNICODE=true
+# ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOCONNECT=true
+# ZSH_TMUX_UNICODE=true
 
 source $ZSH/oh-my-zsh.sh
 
@@ -131,3 +133,9 @@ export PATH="$HOME/.grok/bin:$PATH"
 fpath=(~/.grok/completions/zsh $fpath)
 autoload -Uz compinit && compinit -C
 # <<< grok installer <<<
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+eval "$(mise activate zsh)"
+
+# opencode
+export PATH=/home/devansh/.opencode/bin:$PATH
